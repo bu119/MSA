@@ -1,0 +1,67 @@
+# config 서버는 보통 9000번 사용
+server:
+  port: 9000
+
+# config server (config 저장소 연결)
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          # 레포지토리 주소
+          uri: git@github.com:bu119/MSA_config.git
+          # 로컬 SSH 설정을 무시하고 Git 저장소에 대한 연결을 시도
+          ignoreLocalSshSettings: true
+          # 접근할 수 있게 비밀키 등록
+          private-key: |
+            -----BEGIN RSA PRIVATE KEY-----
+            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
+            -----END RSA PRIVATE KEY-----
