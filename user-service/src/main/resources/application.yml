@@ -1,8 +1,7 @@
-
 spring:
-    application:
-        name: user
-    profiles:
-        active: dev
-    config:
-        import: optional:configserver:http://admin:1234a@localhost:9000
+  application:
+    name: user
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://admin:1234a@localhost:9000
