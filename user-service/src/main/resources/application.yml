@@ -1,3 +1,4 @@
+# config 서버와 연결(접속) (user-dev.yml)
 spring:
   application:
     name: user
