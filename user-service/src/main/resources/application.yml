@@ -6,3 +6,14 @@ spring:
     active: dev
   config:
     import: optional:configserver:http://admin:1234a@localhost:9000
+
+# eureka 서버와 연결
+eureka:
+  client:
+    # 유레카 서버에 등록할지 여부
+    register-with-eureka: true
+    # 유레카 서버의 정보를 가져올지 여부
+    fetch-registry: true
+    # 유레카 서버 주소
+    service-url:
+      defaultZone: http://admin:1234a@localhost:8761/eureka
