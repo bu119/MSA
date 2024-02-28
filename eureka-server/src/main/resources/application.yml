@@ -1,0 +1,10 @@
+# 유레카 서버 포트 번호는 보통 8761번 사용
+server:
+  port: 8761
+
+eureka:
+  client:
+    # 유레카 서버가 자기자신을 등룍하는 것을 막음
+    register-with-eureka: false
+    #
+    fetch-registry: false
