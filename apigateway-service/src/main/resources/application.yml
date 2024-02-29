@@ -1,0 +1,20 @@
+server:
+  port: 8000
+
+spring:
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: user
+            predicates:
+              - name: Path
+                args:
+                  pattern: /user/**
+            uri: http://localhost:8081
+          - id: community
+            predicates:
+              - name: Path
+                args:
+                  pattern: /community/**
+            uri: http://localhost:8082
