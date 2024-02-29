@@ -1,15 +1,19 @@
 server:
   port: 8000
-#
-#spring:
-#  cloud:
-#    gateway:
-#      routes:
-#        - id: user
-#          predicates:
-#            - Path=/user/**
-#          uri: http://localhost:8081
-#        - id: community
-#          predicates:
-#            - Path=/community/**
-#          uri: http://locahost:8082
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: user
+          predicates:
+            - Path=/user/**
+          uri: http://localhost:8081
+          filters:
+            - RewritePath=/user/(?<segment>.*),/$\{segment}
+        - id: community
+          predicates:
+            - Path=/community/**
+          uri: http://localhost:8082
+          filters:
+            - RewritePath=/community/(?<segment>.*), /$\{segment}
