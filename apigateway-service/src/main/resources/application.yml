@@ -1,19 +1,43 @@
 server:
   port: 8000
 
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: gateway
+
 spring:
+  application:
+    name: apigateway
   cloud:
     gateway:
       routes:
         - id: user
           predicates:
             - Path=/user/**
-          uri: http://localhost:8081
+#          uri: lb://localhost:8081
+          uri: lb://USER # 로드밸런싱을 위한 설정
           filters:
             - RewritePath=/user/(?<segment>.*),/$\{segment}
         - id: community
           predicates:
             - Path=/community/**
-          uri: http://localhost:8082
+#          uri: http://localhost:8082
+          uri: lb://COMMUNITY # 로드밸런싱을 위한 설정
           filters:
             - RewritePath=/community/(?<segment>.*), /$\{segment}
+
+# eureka 서버와 연결
+eureka:
+  client:
+    # 유레카 서버에 apigateway-service를 등록할지 여부
+    register-with-eureka: true
+    # 유레카 서버의 등록되어있는 다양한 클라인트들의 정보를 가져올지 여부 (가져와야 게이트웨이로서 로드밸런싱 가능)
+    fetch-registry: true
+    # 유레카 서버 주소
+    service-url:
+      defaultZone: http://admin:1234a@localhost:8761/eureka
