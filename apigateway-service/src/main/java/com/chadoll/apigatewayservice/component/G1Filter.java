@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
-// 하나의 글로벌 필터
+// 하나의 글로벌 필터 (모튼 마이크로서비스가 거쳐야한다.)
 @Component
 public class G1Filter implements GlobalFilter, Ordered {
 
