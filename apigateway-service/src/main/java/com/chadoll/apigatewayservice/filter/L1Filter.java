@@ -1,4 +1,4 @@
-package com.chadoll.apigatewayservice.component;
+package com.chadoll.apigatewayservice.filter;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
